@@ -5,8 +5,17 @@ dotenv.config();
 
 // Function to calculate power score based on hero power stats
 function calculatePowerScore(powerstats) {
-    return Object.values(powerstats).reduce((sum, stat) => sum + parseInt(stat, 10), 0);
-}
+    let baseScore = 0;
+    for (const stat in powerstats) {
+      if (typeof powerstats[stat] === 'number') {
+        baseScore += powerstats[stat];
+      }
+    }
+    const baseScoreNumber = Number(baseScore);
+    const randomBonus = Math.floor(Math.random() * 100) + 1;
+    const totalScore = baseScoreNumber + randomBonus;
+    return totalScore;
+  }
 
 // Function to initiate image creation for a fight and return the proxy_url
 async function generateFightImage(hero1, hero2) {
@@ -41,7 +50,7 @@ async function generateFightImage(hero1, hero2) {
 async function checkAndRetrieveImageUrl(taskHash) {
     let imageUrl = null;
     let attempts = 0; // Set a maximum number of attempts to avoid infinite loops
-    const maxAttempts = 50; // You can adjust this based on expected API response times
+    const maxAttempts = 50; // Adjust this based on expected API response times
 
     while (!imageUrl && attempts < maxAttempts) {
         const statusData = await getImageStatus(taskHash);
@@ -127,9 +136,7 @@ async function handleFight(hero1, hero2) {
         const hero1Score = calculatePowerScore(hero1.powerstats);
         const hero2Score = calculatePowerScore(hero2.powerstats);
         const winner = hero1Score > hero2Score ? hero1 : hero2;
-
         const imageUrl = await generateFightImage(hero1, hero2);  // Directly store the returned imageUrl
-        console.log("LINE97 Winner:", winner.name, "Image URL:", imageUrl);
         return { hero1, hero2, winner, imageUrl };
     } catch (error) {
         console.error("Error during hero fight:", error);

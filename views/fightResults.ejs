@@ -2,7 +2,7 @@
 
   <%- include('partials/nav') %>
 
-  <div class="container mt-4">
+  <main>
     <h1>Fight Results</h1>
     <div class="result-panel">
         <h2>Participants</h2>
@@ -21,10 +21,6 @@
         <% } else { %>
             <p>No winner determined or error in processing the fight.</p>
         <% } %>
-        <div class="actions">
-            <a href="/fight" class="btn btn-primary">New Fight</a>
-            <a href="/" class="btn btn-secondary">Home</a>
-        </div>
     </div>
-</div>
+</main>
  <%- include('partials/footer') %>

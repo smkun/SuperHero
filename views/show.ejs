@@ -1,24 +1,29 @@
 <%- include('partials/head', { pageTitle: superhero.name }) %>
-
-  <%- include('partials/nav') %>
-  <h1><%= superhero.name %></h1>
-  <p>Full Name: <%= superhero.biography['full-name'] %></p>
-  <img src="<%= superhero.image.url %>" alt="<%= superhero.name %>">
-
-  <h2>Powerstats</h2>
-  <ul>
-    <li>Intelligence: <%= superhero.powerstats.intelligence %></li>
-    <li>Strength: <%= superhero.powerstats.strength %></li>
-    <li>Speed: <%= superhero.powerstats.speed %></li>
-    <li>Durability: <%= superhero.powerstats.durability %></li>
-    <li>Power: <%= superhero.powerstats.power %></li>
-    <li>Combat: <%= superhero.powerstats.combat %></li>
-  </ul>
-
-  <a href="/<%= superhero._id %>/edit" class="button">Edit</a>
-
-  <div action="/<%= superhero._id %>?_method=DELETE" method="POST">
-    <button type="submit">Delete</button>
-  </div>
-
-  <%- include('partials/footer') %>
+<%- include('partials/nav') %>
+<main class="superhero-details">
+    <h1><%= superhero.name %></h1>
+    <section class="superhero-info">
+        <p>Full Name: <%= superhero.biography['full-name'] %></p>
+        <img src="<%= superhero.image.url %>" alt="Image of <%= superhero.name %>">
+    </section>
+    <section class="superhero-stats">
+        <h2>Powerstats</h2>
+        <ul>
+            <li>Intelligence: <%= superhero.powerstats.intelligence %></li>
+            <li>Strength: <%= superhero.powerstats.strength %></li>
+            <li>Speed: <%= superhero.powerstats.speed %></li>
+            <li>Durability: <%= superhero.powerstats.durability %></li>
+            <li>Power: <%= superhero.powerstats.power %></li>
+            <li>Combat: <%= superhero.powerstats.combat %></li>
+        </ul>
+    </section>
+    <% if (user) { %>
+        <div class="superhero-actions">
+            <a href="/<%= superhero._id %>/edit" class="button">Edit</a>
+            <form action="/<%= superhero._id %>?_method=DELETE" method="POST">
+                <button type="submit" class="button">Delete</button>
+            </form>
+        </div>
+    <% } %>
+</main>
+<%- include('partials/footer') %>

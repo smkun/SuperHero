@@ -1,0 +1,15 @@
+<%- include('partials/head', { pageTitle: 'Superheroes' }) %> <%-
+include('partials/nav') %>
+<main>
+<h1>Superheroes</h1>
+<div class="hero-list">
+    <ul>
+        <% superheroes.forEach(function(superhero) { %>
+        <li>
+            <a href="/<%= superhero._id %>"><%= superhero.name %></a>
+        </li>
+        <% }); %>
+    </ul>
+</div>
+</main>
+<%- include('partials/footer') %>

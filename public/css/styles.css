@@ -1,164 +1,128 @@
-/* public/css/styles.css */
+/* General Body Styles */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #1c2331;
-    color: #ffffff;
-    margin: 0;
-    padding: 0;
-  }
-  img {
-    border-radius: 8px;
-  }
-  nav {
-    background-color: #2c3e50;
-    padding: 10px;
-  }
-  
-  nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-  }
-  
-  nav ul li {
-    margin-right: 10px;
-  }
-  
-  nav ul li a {
-    color: #ffffff;
-    text-decoration: none;
-    padding: 5px 10px;
-  }
-  
-  nav ul li a:hover {
-    background-color: #34495e;
-  }
-  
-  h1 {
-    color: #3498db;
-    margin-top: 20px;
-    margin-bottom: 10px;
-  }
-  
-  ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  ul li {
-    margin-bottom: 10px;
-  }
-  
-  ul li a {
-    color: #3498db;
-    text-decoration: none;
-  }
-  
-  ul li a:hover {
-    text-decoration: underline;
-  }
-  
-  form {
-    margin-top: 20px;
-    max-width: 400px;
-    padding: 20px;
-    background-color: #2c3e50;
-    border-radius: 5px;
-  }
-  
-  form div {
-    margin-bottom: 10px;
-  }
-  
-  form label {
-    display: block;
-    margin-bottom: 5px;
-  }
-  
-  form input[type="text"],
-  form input[type="number"] {
-    width: 100%;
-    padding: 8px;
-    border-radius: 3px;
-    border: 1px solid #ccc;
-  }
-  
-  form button, 
-  div button{
-    background-color: #3498db;
-    color: #ffffff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 3px;
-    cursor: pointer;
-    margin-top: 5px;
-  }
-  
-  form button:hover {
-    background-color: #2980b9;
-  }
-  
-  footer {
-    background-color: #2c3e50;
-    color: #ffffff;
-    padding: 10px;
-    text-align: center;
-    margin-top: 20px;
-  }
-  .button {
-    display: inline-block;
-    background-color: #3498db;
-    color: #ffffff;
-    text-decoration: none;
-    padding: 10px 20px;
-    border-radius: 3px;
-    cursor: pointer;
-    margin-top: 10px;
-  }
-  
-  .button:hover {
-    background-color: #2980b9;
-  }
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #1c2331;
+  color: #ffffff;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
 
-  .fight-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    text-align: center;
-  }
-  
-  .fight-container h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
-  
-  .fight-container img {
-    max-width: 100%;
-    height: auto;
-    margin-bottom: 20px;
-  }
-  
-  .fight-container h3 {
-    font-size: 20px;
-    margin-bottom: 10px;
-  }
-  
-  .fight-container p {
-    margin-bottom: 10px;
-  }
-  
-  .fight-container .button {
-    display: inline-block;
-    background-color: #3498db;
-    color: #ffffff;
-    text-decoration: none;
-    padding: 10px 20px;
-    border-radius: 3px;
-    cursor: pointer;
-    margin-top: 20px;
-  }
-  
-  .fight-container .button:hover {
-    background-color: #2980b9;
-  }
+/* Images */
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5 {
+  color: #3498db;
+  font-weight: 600;
+}
+
+/* Lists */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+ul li {
+  margin-bottom: 10px;
+}
+
+/* Links */
+a {
+  color: #3498db;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+a:hover, a:focus {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+/* Forms */
+form {
+  max-width: 400px;
+  background-color: #2c3e50;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+form input[type="text"],
+form input[type="number"],
+form input[type="password"],
+form select {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+}
+
+/* Buttons */
+button, .button {
+  background-color: #3498db;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 3px;
+  cursor: pointer;
+  display: inline-block;
+}
+
+button:hover, .button:hover {
+  background-color: #2980b9;
+}
+
+/* Footer */
+footer {
+  background-color: #2c3e50;
+  color: #ffffff;
+  padding: 10px;
+  text-align: center;
+  position: relative;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+/* Navigation Styles */
+nav {
+  background-color: #2c3e50;
+  padding: 10px;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  margin-right: 10px;
+}
+
+nav ul li a {
+  padding: 5px 10px;
+  transition: background-color 0.3s;
+}
+
+nav ul li a:hover {
+  background-color: #34495e;
+  color: #3498db;
+}
+
+/* Specific Page Styles */
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}

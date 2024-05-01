@@ -2,12 +2,12 @@ const mongoose = require('mongoose');
 
 const powerStatsSchema = new mongoose.Schema(
   {
-    intelligence: String,
-    strength: String,
-    speed: String,
-    durability: String,
-    power: String,
-    combat: String,
+    intelligence: Number,
+    strength: Number,
+    speed: Number,
+    durability: Number,
+    power: Number,
+    combat: Number,
   },
   { _id: false }
 );
@@ -24,6 +24,10 @@ const superheroSchema = new mongoose.Schema({
   },
   image: {
     url: String,
+  },
+  createdBy: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
   },
 });
 

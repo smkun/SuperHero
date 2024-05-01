@@ -1,49 +1,48 @@
-<!DOCTYPE html>
 <%- include('partials/head', { pageTitle: 'New Superhero' }) %>
-
-  <%- include('partials/nav') %>
-  <h1>Create New Superhero</h1>
-  <form action="/" method="POST">
-    <div>
-      <label for="name">Name:</label>
-      <input type="text" id="name" name="name" required>
-    </div>
-    <div>
-      <label for="fullName">Full Name:</label>
-      <input type="text" id="fullName" name="biography[full-name]">
-    </div>
-    <div>
-      <label for="imageUrl">Image URL:</label>
-      <input type="text" id="imageUrl" name="image[url]">
-    </div>
-
-    <h2>Powerstats</h2>
-    <div>
-      <label for="intelligence">Intelligence:</label>
-      <input type="number" id="intelligence" name="powerstats[intelligence]" min="0" max="100" required>
-    </div>
-    <div>
-      <label for="strength">Strength:</label>
-      <input type="number" id="strength" name="powerstats[strength]" min="0" max="100" required>
-    </div>
-    <div>
-      <label for="speed">Speed:</label>
-      <input type="number" id="speed" name="powerstats[speed]" min="0" max="100" required>
-    </div>
-    <div>
-      <label for="durability">Durability:</label>
-      <input type="number" id="durability" name="powerstats[durability]" min="0" max="100" required>
-    </div>
-    <div>
-      <label for="power">Power:</label>
-      <input type="number" id="power" name="powerstats[power]" min="0" max="100" required>
-    </div>
-    <div>
-      <label for="combat">Combat:</label>
-      <input type="number" id="combat" name="powerstats[combat]" min="0" max="100" required>
-    </div>
-
-    <button type="submit">Create</button>
-  </form>
-
-  <%- include('partials/footer') %>
+<%- include('partials/nav') %>
+<main>
+  <section class="superhero-form">
+    <h1>Create New Superhero</h1>
+    <form action="/" method="POST">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+      <div class="form-group">
+        <label for="fullName">Full Name:</label>
+        <input type="text" id="fullName" name="biography[full-name]">
+      </div>
+      <div class="form-group">
+        <label for="imageUrl">Image URL:</label>
+        <input type="text" id="imageUrl" name="image[url]">
+      </div>
+      <h2>Powerstats</h2>
+      <div class="form-group">
+        <label for="intelligence">Intelligence:</label>
+        <input type="number" id="intelligence" name="powerstats[intelligence]" min="0" max="100" required>
+      </div>
+      <div class="form-group">
+        <label for="strength">Strength:</label>
+        <input type="number" id="strength" name="powerstats[strength]" min="0" max="100" required>
+      </div>
+      <div class="form-group">
+        <label for="speed">Speed:</label>
+        <input type="number" id="speed" name="powerstats[speed]" min="0" max="100" required>
+      </div>
+      <div class="form-group">
+        <label for="durability">Durability:</label>
+        <input type="number" id="durability" name="powerstats[durability]" min="0" max="100" required>
+      </div>
+      <div class="form-group">
+        <label for="power">Power:</label>
+        <input type="number" id="power" name="powerstats[power]" min="0" max="100" required>
+      </div>
+      <div class="form-group">
+        <label for="combat">Combat:</label>
+        <input type="number" id="combat" name="powerstats[combat]" min="0" max="100" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Create</button>
+    </form>
+  </section>
+</main>
+<%- include('partials/footer') %>
