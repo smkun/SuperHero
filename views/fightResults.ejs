@@ -1,0 +1,30 @@
+<%- include('partials/head', { pageTitle: 'Edit Superhero' }) %>
+
+  <%- include('partials/nav') %>
+
+  <div class="container mt-4">
+    <h1>Fight Results</h1>
+    <div class="result-panel">
+        <h2>Participants</h2>
+        <p><strong>Hero 1:</strong> <%= hero1Name %></p>
+        <p><strong>Hero 2:</strong> <%= hero2Name %></p>
+
+        <h2>Winner</h2>
+        <% if (winnerName && imageUrl && winnerImage) { %>
+            <p><strong>Winner:</strong> <%= winnerName %></p>
+            <div class="winner-image">
+                <img src="<%= winnerImage %>" alt="Winner Image" style="max-width: 300px;">
+            </div>
+            <div class="fight-image">
+                <img src="<%= imageUrl %>" alt="Generated Fight Scene Image" style="max-width: 300px;">
+            </div>
+        <% } else { %>
+            <p>No winner determined or error in processing the fight.</p>
+        <% } %>
+        <div class="actions">
+            <a href="/fight" class="btn btn-primary">New Fight</a>
+            <a href="/" class="btn btn-secondary">Home</a>
+        </div>
+    </div>
+</div>
+ <%- include('partials/footer') %>

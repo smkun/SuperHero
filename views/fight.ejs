@@ -1,0 +1,26 @@
+<%- include('partials/head', { pageTitle: 'Edit Superhero' }) %>
+
+  <%- include('partials/nav') %>
+    <h1>Hero Fight</h1>
+
+    <% if (typeof winner !== 'undefined') { %>
+        <h2><%= hero1.name %> VS <%= hero2.name %></h2>
+        <img src="<%= imageUrl %>" alt="Fight Image">
+        <h3>Winner: <%= winner.name %></h3>
+        <img src="<%= winnerImage %>" alt="Winner Image">
+    <% } else { %>
+        <form action="/fight" method="post">
+            <label for="hero1Name">Hero 1:</label>
+            <input type="text" id="hero1Name" name="hero1Name" required>
+            <label for="hero2Name">Hero 2:</label>
+            <input type="text" id="hero2Name" name="hero2Name" required>
+            <button type="submit">Fight!</button>
+        </form>
+        <h2>Select Two Heroes</h2>
+        <ul>
+            <% superheroes.forEach(function(hero) { %>
+                <li><%= hero.name %></li>
+            <% }); %>
+        </ul>
+    <% } %>
+    <%- include('partials/footer') %>

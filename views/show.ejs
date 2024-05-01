@@ -1,0 +1,24 @@
+<%- include('partials/head', { pageTitle: superhero.name }) %>
+
+  <%- include('partials/nav') %>
+  <h1><%= superhero.name %></h1>
+  <p>Full Name: <%= superhero.biography['full-name'] %></p>
+  <img src="<%= superhero.image.url %>" alt="<%= superhero.name %>">
+
+  <h2>Powerstats</h2>
+  <ul>
+    <li>Intelligence: <%= superhero.powerstats.intelligence %></li>
+    <li>Strength: <%= superhero.powerstats.strength %></li>
+    <li>Speed: <%= superhero.powerstats.speed %></li>
+    <li>Durability: <%= superhero.powerstats.durability %></li>
+    <li>Power: <%= superhero.powerstats.power %></li>
+    <li>Combat: <%= superhero.powerstats.combat %></li>
+  </ul>
+
+  <a href="/<%= superhero._id %>/edit" class="button">Edit</a>
+
+  <div action="/<%= superhero._id %>?_method=DELETE" method="POST">
+    <button type="submit">Delete</button>
+  </div>
+
+  <%- include('partials/footer') %>
