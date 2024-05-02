@@ -148,6 +148,11 @@ main {
   align-items: center;
   /* min-height: 100vh; */
 }
+
+main#new-ejs {
+  flex-direction: row;
+}
+
 body > #superheroes,
 body > #new-ejs,
 body > #fight-ejs {
@@ -155,6 +160,21 @@ body > #fight-ejs {
     width: 100%;
     margin-left: 2.5%; 
 }
+
+section.instructions {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  background-color: #2c3e50;
+  border-radius: 8px;
+  margin-left: 2.5%;
+  margin-top: 80px;
+  margin-right: 50px;
+  width: 98%;
+}
+
 #superheroes,
 #new-ejs,
 #fight-ejs {
