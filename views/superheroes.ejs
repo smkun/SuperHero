@@ -1,9 +1,9 @@
 <%- include('partials/head', { pageTitle: 'Superheroes' }) %> <%-
 include('partials/nav') %>
-<main>
+<main id="superheroes">
 <h1>Superheroes</h1>
 <div class="hero-list">
-    <ul>
+    <ul id="hero-list">
         <% superheroes.forEach(function(superhero) { %>
         <li>
             <a href="/<%= superhero._id %>"><%= superhero.name %></a>

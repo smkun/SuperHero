@@ -1,41 +1,115 @@
 <%- include('partials/head', { pageTitle: 'Edit Superhero' }) %> <%-
 include('partials/nav') %>
-<main>
-<h1>Hero Fight</h1>
-<% if (typeof winner !== 'undefined') { %>
-<h2><%= hero1.name %> VS <%= hero2.name %></h2>
-<img
-    src="<%= imageUrl %>"
-    alt="Fight Image" />
-<h3>Winner: <%= winner.name %></h3>
-<img
-    src="<%= winnerImage %>"
-    alt="Winner Image" />
-<% } else { %>
-<form
-    action="/fight"
-    method="post">
-    <label for="hero1Name">Hero 1:</label>
-    <input
-        type="text"
-        id="hero1Name"
-        name="hero1Name"
-        required />
-    <label for="hero2Name">Hero 2:</label>
-    <input
-        type="text"
-        id="hero2Name"
-        name="hero2Name"
-        required />
-    <button type="submit">Fight!</button>
-</form>
-<h2>Enter Two Heroes to do battle</h2>
-<div class="hero-list">
-    <ul>
-        <% superheroes.forEach(function(hero) { %>
-        <li class="name"><%= hero.name %></li>
-        <% }); %>
-    </ul>
+
+<div
+    id="loading-message"
+    style="display: none">
+    Generating fight image...
 </div>
+
+<main id="fight-ejs">
+    <div>
+        <h1>Hero Fight</h1>
+        <% if (typeof winner !== 'undefined') { %>
+        <h2><%= hero1.name %> VS <%= hero2.name %></h2>
+        <img
+            src="<%= imageUrl %>"
+            alt="Fight Image" />
+        <h3>Winner: <%= winner.name %></h3>
+        <img
+            src="<%= winnerImage %>"
+            alt="Winner Image" />
+        <% } else { %>
+        <form
+            action="/fight"
+            method="post">
+            <label for="hero1Name">Hero 1:</label>
+            <input
+                type="text"
+                id="hero1Name"
+                name="hero1Name"
+                list="hero1List"
+                required />
+            <datalist id="hero1List"></datalist>
+
+            <label for="hero2Name">Hero 2:</label>
+            <input
+                type="text"
+                id="hero2Name"
+                name="hero2Name"
+                list="hero2List"
+                required />
+            <datalist id="hero2List"></datalist>
+
+            <button type="submit">Fight!</button>
+        </form>
+    </div>
+    <div class="slideshow-container">
+        <img
+            class="slide"
+            src="/images/crack.png"
+            alt="Action Image" />
+        <img
+            class="slide"
+            src="/images/crash.png"
+            alt="Action Image" />
+        <img
+            class="slide"
+            src="/images/crunch.png"
+            alt="Action Image" />
+        <img
+            class="slide"
+            src="/images/whack.png"
+            alt="Action Image" />
+        <img
+            class="slide"
+            src="/images/whallop.png"
+            alt="Action Image" />
+    </div>
+    <% } %>
 </main>
-<% } %> <%- include('partials/footer') %>
+
+<%- include('partials/footer') %>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var form = document.querySelector("form");
+        var slideshowContainer = document.querySelector(".slideshow-container");
+        var loadingMessage = document.getElementById("loading-message");
+        var slides = document.querySelectorAll(".slide");
+        var currentIndex = 0;
+
+        function showNextSlide() {
+            slides[currentIndex].style.display = "none";
+            currentIndex = (currentIndex + 1) % slides.length;
+            slides[currentIndex].style.display = "block";
+        }
+
+        if (form) {
+            form.addEventListener("submit", function () {
+                slideshowContainer.style.display = "block";
+                loadingMessage.style.display = "block";
+                slides[currentIndex].style.display = "block";
+                setInterval(showNextSlide, 2000);
+            });
+        }
+
+        // Fetch hero names from the database and populate the datalist
+        fetch("/api/superheroes")
+            .then((response) => response.json())
+            .then((data) => {
+                var hero1List = document.getElementById("hero1List");
+                var hero2List = document.getElementById("hero2List");
+
+                data.forEach((hero) => {
+                    var option = document.createElement("option");
+                    option.value = hero.name;
+                    hero1List.appendChild(option);
+                    hero2List.appendChild(option.cloneNode(true));
+                });
+            })
+            .catch((error) => {
+                console.error("Error fetching hero names:", error);
+            });
+    });
+</script>

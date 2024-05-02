@@ -48,7 +48,7 @@ db.once("open", () => {
 });
 // Register and login/logout routes
 app.get("/register", (req, res) => {
-    res.render("register");
+    res.render("register", { user: req.user });
 });
 
 app.post("/register", async (req, res) => {
@@ -112,6 +112,16 @@ app.get("/new", ensureAuthenticated, (req, res) => {
     res.render("new", { user: req.user });
 });
 
+app.get("/api/superheroes", async (req, res) => {
+    try {
+        const superheroes = await Superhero.find({}, "name");
+        res.json(superheroes);
+    } catch (error) {
+        console.error("Error fetching superhero names:", error);
+        res.status(500).send("Internal Server Error");
+    }
+});
+
 // GET route to display fight form and list of heroes
 app.get("/fight", ensureAuthenticated, async (req, res) => {
     try {
@@ -166,6 +176,9 @@ app.get("/fight/results", async (req, res) => {
         user: req.user,
     });
 });
+app.get('/slideshow', (req, res) => {
+    res.render('slideshow');
+  });
 
 // POST route to handle the fight logic and display results
 app.post("/fight", async (req, res) => {
@@ -210,6 +223,25 @@ app.post("/", ensureAuthenticated, async (req, res) => {
         res.status(500).send("Internal Server Error");
     }
 });
+// EDIT route
+app.get("/:id/edit", ensureAuthenticated, async (req, res) => {
+    try {
+        const superhero = await Superhero.findById(req.params.id);
+
+        if (!superhero) {
+            return res.status(404).send("Superhero not found");
+        }
+
+        if (superhero.createdBy.toString() !== req.user._id.toString()) {
+            return res.redirect("/unauthorized");
+        }
+
+        res.render("edit", { superhero });
+    } catch (error) {
+        console.error("Error fetching superhero:", error);
+        res.status(500).send("Internal Server Error");
+    }
+});
 
 // DELETE route
 app.delete("/:id", async (req, res) => {
@@ -243,25 +275,7 @@ app.get("/:id", async (req, res) => {
     }
 });
 
-// EDIT route
-app.get("/:id/edit", ensureAuthenticated, async (req, res) => {
-    try {
-        const superhero = await Superhero.findById(req.params.id);
 
-        if (!superhero) {
-            return res.status(404).send("Superhero not found");
-        }
-
-        if (superhero.createdBy.toString() !== req.user._id.toString()) {
-            return res.redirect("/unauthorized");
-        }
-
-        res.render("edit", { superhero });
-    } catch (error) {
-        console.error("Error fetching superhero:", error);
-        res.status(500).send("Internal Server Error");
-    }
-});
 
 // UPDATE route
 app.put("/:id", async (req, res) => {
