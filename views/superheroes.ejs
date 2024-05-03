@@ -1,25 +1,17 @@
-<%- include('partials/head', { pageTitle: 'Superheroes' }) %> <%-
-include('partials/nav') %>
+<%- include('partials/head', { pageTitle: 'Superheroes' }) %>
+<%- include('partials/nav') %>
 
 <main id="superheroes">
     <h1>Superheroes</h1>
-    <input
-        type="text"
-        id="search"
-        placeholder="Search superheroes..."
-        class="search-bar" />
-    <div
-        id="letterButtons"
-        class="letter-buttons"></div>
-    <div
-        id="groupedList"
-        class="grouped-list"></div>
+    <input type="text" id="search" placeholder="Search superheroes..." class="search-bar" />
+    <div id="letterButtons" class="letter-buttons"></div>
+    <div id="groupedList" class="grouped-list"></div>
 </main>
 
 <%- include('partials/footer') %>
 
 <script>
-    let allSuperheroes = <%- JSON.stringify(superheroes) %>; //this error is a lie
+    let allSuperheroes = <%- JSON.stringify(superheroes) %>;
 
     function displayItems(items) {
         const groupedItems = items.reduce((acc, item) => {
@@ -43,13 +35,17 @@ include('partials/nav') %>
             button.onclick = function() {
                 const allLists = document.querySelectorAll('.hero-list');
                 allLists.forEach(list => list.style.display = 'none');
-                document.getElementById(`list-${letter}`).style.display = 'flex'; // Ensure flex display
+                document.getElementById(`list-${letter}`).style.display = 'flex';
             };
 
             const itemsList = document.createElement('ul');
             itemsList.id = `list-${letter}`;
             itemsList.className = 'hero-list';
-            itemsList.style.display = 'none'; // Initially hidden
+            itemsList.style.display = 'none';
+
+            // Sort the superhero items alphabetically by name
+            groupedItems[letter].sort((a, b) => a.name.localeCompare(b.name));
+
             groupedItems[letter].forEach(item => {
                 const listItem = document.createElement('li');
                 listItem.innerHTML = `<a href="/superheroes/${item._id}">${item.name}</a>`;
