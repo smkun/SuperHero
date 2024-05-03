@@ -19,7 +19,7 @@ function calculatePowerScore(powerstats) {
 
 // Function to initiate image creation for a fight and return the proxy_url
 async function generateFightImage(hero1, hero2) {
-    const prompt = `Marvel comics, heroes fighting, ${hero1.name} VS ${hero2.name} --ar 16:9`;
+    const prompt = `Comic book, superheroes fighting, Marvel, DC ${hero1.name} VS ${hero2.name} --ar 16:9`;
     try {
         const response = await fetch("https://api.userapi.ai/midjourney/v2/imagine", {
             method: 'POST',

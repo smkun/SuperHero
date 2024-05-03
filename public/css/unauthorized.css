@@ -1,0 +1,43 @@
+/* Unauthorized Access Page Styles */
+@keyframes flash {
+    0%, 100% { color: #d9534f; } 
+    50% { color: #ffffff; } 
+  }
+  
+  .unauthorized-header h1 {
+    font-size: 2.5em;
+    animation: flash 1s linear infinite; 
+  }
+  
+  .unauthorized-access {
+    text-align: center;
+    padding: 50px;
+    color: #fff;
+    /* background: url('/images/comic-background.jpg') no-repeat center center; */
+    background-size: cover;
+  }
+  
+  .unauthorized-header h1 {
+    font-size: 2.5em;
+    color: #d9534f;
+  }
+  
+  .unauthorized-header img.shield-logo {
+    width: 250px; 
+    margin-top: 20px;
+  }
+  
+  .unauthorized-message h2 {
+    font-size: 1.5em;
+    margin-top: 20px;
+  }
+  
+  .unauthorized-message h3, .unauthorized-message h4, .unauthorized-message h5 {
+    font-size: 1.2em;
+    margin-top: 10px;
+    color: #bbbbbb; 
+  }
+  
+  .unauthorized-access h1, .unauthorized-access h2, .unauthorized-access h3, .unauthorized-access h4, .unauthorized-access h5 {
+    font-family: 'Bangers', cursive; 
+  }

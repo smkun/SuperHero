@@ -3,12 +3,12 @@
       <li><a href="/">Home</a></li>
       <li><a href="/superheroes">Superheroes</a></li>
       <% if (user) { %>
-          <li><a href="/new">New Superhero</a></li>
+          <li><a href="/superheroes/new">New Superhero</a></li>
           <li><a href="/fight">Fight</a></li>
-          <li><a href="/logout">Logout</a></li>
+          <li><a href="/auth/logout">Logout</a></li>
           <li>Welcome, <%= user.username %></li>
       <% } else { %>
-          <li><a href="/login">Login</a></li>
+          <li><a href="/auth/login">Login</a></li>
       <% } %>
   </ul>
 </nav>

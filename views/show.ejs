@@ -1,5 +1,6 @@
 <%- include('partials/head', { pageTitle: superhero.name }) %>
 <%- include('partials/nav') %>
+
 <main class="superhero-details">
     <h1><%= superhero.name %></h1>
     <section class="superhero-info">
@@ -19,10 +20,10 @@
     </section>
     <% if (user) { %>
         <div class="superhero-actions">
-            <form action="/<%= superhero._id %>/edit" method="GET" style="margin: 0;" class="action-form">
+            <form action="/superheroes/<%= superhero._id %>/edit" method="GET" style="margin: 0;" class="action-form">
                 <button type="submit" class="button">Edit</button>
-            </form>
-            <form action="/<%= superhero._id %>?_method=DELETE" method="POST" class="action-form">
+              </form>
+            <form action="/superheroes/<%= superhero._id %>?_method=DELETE" method="POST" class="action-form">
                 <button type="submit" class="button">Delete</button>
             </form>
         </div>

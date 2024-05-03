@@ -95,7 +95,7 @@ include('partials/nav') %>
         }
 
         // Fetch hero names from the database and populate the datalist
-        fetch("/api/superheroes")
+        fetch("/fight/api/superheroes")
             .then((response) => response.json())
             .then((data) => {
                 var hero1List = document.getElementById("hero1List");
