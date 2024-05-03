@@ -1,72 +1,147 @@
-<%- include('partials/head', { pageTitle: 'New Superhero' }) %>
-<%- include('partials/nav') %>
+<%- include('partials/head', { pageTitle: 'New Superhero' }) %> <%-
+include('partials/nav') %>
 <main id="new-ejs">
-  <section class="superhero-form">
-    <h1>Create Hero</h1>
-    <form action="/superheroes" method="POST">
-      <div class="form-group">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
-      </div>
-      <div class="form-group">
-        <label for="fullName">Full Name:</label>
-        <input type="text" id="fullName" name="biography[full-name]">
-      </div>
-      <div class="form-group">
-        <label for="imageUrl">Image URL:</label>
-        <input type="text" id="imageUrl" name="image[url]">
-      </div>
-      <h2>Powerstats</h2>
-      <div class="form-group">
-        <label for="intelligence">Intelligence:</label>
-        <input type="number" id="intelligence" name="powerstats[intelligence]" min="0" max="100" required>
-      </div>
-      <div class="form-group">
-        <label for="strength">Strength:</label>
-        <input type="number" id="strength" name="powerstats[strength]" min="0" max="100" required>
-      </div>
-      <div class="form-group">
-        <label for="speed">Speed:</label>
-        <input type="number" id="speed" name="powerstats[speed]" min="0" max="100" required>
-      </div>
-      <div class="form-group">
-        <label for="durability">Durability:</label>
-        <input type="number" id="durability" name="powerstats[durability]" min="0" max="100" required>
-      </div>
-      <div class="form-group">
-        <label for="power">Power:</label>
-        <input type="number" id="power" name="powerstats[power]" min="0" max="100" required>
-      </div>
-      <div class="form-group">
-        <label for="combat">Combat:</label>
-        <input type="number" id="combat" name="powerstats[combat]" min="0" max="100" required>
-      </div>
-      <button type="submit" class="btn btn-primary">Create</button>
-    </form>
-  </section>
-  <section class="instructions">
-    <h2>Things to consider when entering your heroes:</h2>
-    <ol>
-      <li>
-        <strong>Intelligence</strong>: This represents a hero's mental acuity, problem-solving abilities, and knowledge. A higher intelligence score indicates exceptional strategic thinking, inventiveness, and understanding of complex concepts. For instance, Iron Man's intelligence rating of 100 reflects his genius-level intellect and proficiency in technology and science.
-      </li>
-      <li>
-        <strong>Strength</strong>: Strength measures a hero's physical power. A strength rating of 100 signifies superhuman might, allowing feats like lifting massive objects or overpowering opponents. Hulk, with a strength of 100, epitomizes raw physical force.
-      </li>
-      <li>
-        <strong>Speed</strong>: Speed denotes how fast a hero can move. A rating of 100 implies incredible velocity, such as running at supersonic speeds. Quicksilver, with a speed of 100, can dash faster than the eye can follow.
-      </li>
-      <li>
-        <strong>Durability</strong>: Durability gauges a hero's resilience and ability to withstand damage. A durability rating of 100 means near-invulnerability. Wolverine's durability of 100 allows him to heal rapidly and endure extreme punishment.
-      </li>
-      <li>
-        <strong>Power</strong>: Power encompasses various abilities unique to each hero. It could be energy projection, reality manipulation, or other extraordinary talents. Hulk's power rating of 98 reflects his immense destructive force.
-      </li>
-      <li>
-        <strong>Combat</strong>: Wolverine's combat skills are unparalleled, making him the pinnacle of hand-to-hand combat. His mastery of martial arts, enhanced senses, adamantium claws, rapid healing, fearlessness, and berserker rage combine to create an unstoppable force on the battlefield. Few can match his ferocity, endurance, and sheer tenacity.
-      </li>
-    </ol>
-  </section>
-   
+    <section class="superhero-form">
+        <h1>Create Hero</h1>
+        <form
+            action="/superheroes"
+            method="POST">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    required />
+            </div>
+            <div class="form-group">
+                <label for="fullName">Full Name:</label>
+                <input
+                    type="text"
+                    id="fullName"
+                    name="biography[full-name]" />
+            </div>
+            <div class="form-group">
+                <label for="imageUrl">Image URL:</label>
+                <input
+                    type="text"
+                    id="imageUrl"
+                    name="image[url]" />
+            </div>
+            <h2>Powerstats</h2>
+            <div class="form-group">
+                <label for="intelligence">Intelligence:</label>
+                <input
+                    type="number"
+                    id="intelligence"
+                    name="powerstats[intelligence]"
+                    min="0"
+                    max="100"
+                    required />
+            </div>
+            <div class="form-group">
+                <label for="strength">Strength:</label>
+                <input
+                    type="number"
+                    id="strength"
+                    name="powerstats[strength]"
+                    min="0"
+                    max="100"
+                    required />
+            </div>
+            <div class="form-group">
+                <label for="speed">Speed:</label>
+                <input
+                    type="number"
+                    id="speed"
+                    name="powerstats[speed]"
+                    min="0"
+                    max="100"
+                    required />
+            </div>
+            <div class="form-group">
+                <label for="durability">Durability:</label>
+                <input
+                    type="number"
+                    id="durability"
+                    name="powerstats[durability]"
+                    min="0"
+                    max="100"
+                    required />
+            </div>
+            <div class="form-group">
+                <label for="power">Power:</label>
+                <input
+                    type="number"
+                    id="power"
+                    name="powerstats[power]"
+                    min="0"
+                    max="100"
+                    required />
+            </div>
+            <div class="form-group">
+                <label for="combat">Combat:</label>
+                <input
+                    type="number"
+                    id="combat"
+                    name="powerstats[combat]"
+                    min="0"
+                    max="100"
+                    required />
+            </div>
+            <button
+                type="submit"
+                class="btn btn-primary">
+                Create
+            </button>
+        </form>
+    </section>
+    <section class="instructions">
+        <h2>Things to consider when entering your heroes:</h2>
+        <ol>
+            <li>
+                <strong>Intelligence</strong>: This represents a hero's mental
+                acuity, problem-solving abilities, and knowledge. A higher
+                intelligence score indicates exceptional strategic thinking,
+                inventiveness, and understanding of complex concepts. For
+                instance, Iron Man's intelligence rating of 100 reflects his
+                genius-level intellect and proficiency in technology and
+                science.
+            </li>
+            <li>
+                <strong>Strength</strong>: Strength measures a hero's physical
+                power. A strength rating of 100 signifies superhuman might,
+                allowing feats like lifting massive objects or overpowering
+                opponents. Hulk, with a strength of 100, epitomizes raw physical
+                force.
+            </li>
+            <li>
+                <strong>Speed</strong>: Speed denotes how fast a hero can move.
+                A rating of 100 implies incredible velocity, such as running at
+                supersonic speeds. Quicksilver, with a speed of 100, can dash
+                faster than the eye can follow.
+            </li>
+            <li>
+                <strong>Durability</strong>: Durability gauges a hero's
+                resilience and ability to withstand damage. A durability rating
+                of 100 means near-invulnerability. Wolverine's durability of 100
+                allows him to heal rapidly and endure extreme punishment.
+            </li>
+            <li>
+                <strong>Power</strong>: Power encompasses various abilities
+                unique to each hero. It could be energy projection, reality
+                manipulation, or other extraordinary talents. Hulk's power
+                rating of 98 reflects his immense destructive force.
+            </li>
+            <li>
+                <strong>Combat</strong>: Wolverine's combat skills are
+                unparalleled, making him the pinnacle of hand-to-hand combat.
+                His mastery of martial arts, enhanced senses, adamantium claws,
+                rapid healing, fearlessness, and berserker rage combine to
+                create an unstoppable force on the battlefield. Few can match
+                his ferocity, endurance, and sheer tenacity.
+            </li>
+        </ol>
+    </section>
 </main>
 <%- include('partials/footer') %>
