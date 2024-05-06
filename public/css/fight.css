@@ -4,6 +4,12 @@
     align-items: center;
   }
   
+  .selector {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 20px; /* Space between the form and the slideshow */
+  }
   .slideshow-container {
     width: 300px; /* Set the width of the slideshow */
     height: 300px; /* Set the height of the slideshow */
